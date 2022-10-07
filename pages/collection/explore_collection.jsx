@@ -34,7 +34,7 @@ const Explore_collection = () => {
 
   return (
     <>
-      <Meta title="Explore Collection || Xhibiter | NFT Marketplace Next.js Template" />
+      <Meta title="Explore Collection || vKnightHub | NFT Marketplace" />
       <section className="relative mt-24 lg:pb-48 pb-24">
         <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
           <img

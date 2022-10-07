@@ -59,7 +59,7 @@ const Address = () => {
               Address
             </span>
             <address className="dark:text-jacarta-300 text-sm not-italic">
-              08 W 36th St, New YorkNY 10001
+              180/77/15 Nguyễn Hữu Cảnh, Phường 22, Quận Bình Thạnh, TP Hồ Chí Minh, Việt Nam
             </address>
           </div>
         </div>
@@ -86,7 +86,7 @@ const Address = () => {
               href="mailto:office@xhibiter.com"
               className="hover:text-accent dark:text-jacarta-300 text-sm not-italic"
             >
-              office@xhibiter.com
+              support@vknight.io
             </a>
           </div>
         </div>

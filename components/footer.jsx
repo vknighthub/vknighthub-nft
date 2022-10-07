@@ -85,11 +85,11 @@ const footer = () => {
 
           <div className="flex flex-col items-center justify-between space-y-2 py-8 sm:flex-row sm:space-y-0">
             <span className="dark:text-jacarta-400 text-sm">
-              <span>© {new Date().getFullYear()} Xhibiter — Made by</span>
-              <Link href="https://themeforest.net/user/ib-themes">
-                <a className="hover:text-accent dark:hover:text-white">
+              <span>© {new Date().getFullYear()} vKnightHub NFT — Made by</span>
+              <Link href="https://vknight.io/">
+                <a className="hover:text-accent dark:hover:text-white" target="_blank">
                   {" "}
-                  ib-themes
+                  vKnightHub
                 </a>
               </Link>
             </span>

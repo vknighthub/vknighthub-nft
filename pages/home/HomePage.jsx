@@ -5,20 +5,22 @@ import {
 	Top_collection,
 	Tranding_category,
 	NewseLatter,
+	Partners
 } from '../../components/component';
 import Meta from '../../components/Meta';
 
-const Home_1 = () => {
+const Home = () => {
 	return (
 		<main>
-			<Meta title="Home 1 || Xhibiter | NFT Marketplace Next.js Template" />
+			<Meta title="Home || vKnightHub | NFT Marketplace" />
 			<Hero />
 			<Bids />
 			<Top_collection />
 			<Tranding_category />
 			<NewseLatter />
+			<Partners />
 		</main>
 	);
 };
 
-export default Home_1;
+export default Home;

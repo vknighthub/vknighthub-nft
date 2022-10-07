@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { closeMblMenu } from "../redux/counterSlice";
@@ -119,105 +120,18 @@ const MblNavbar = ({ theme }) => {
       setnavText("collection");
     }
   }, [dispatch, navItemValue, router]);
-  const homenavData = [
-    {
-      id: 1,
-      text: "home 1",
-      url: "/",
-    },
-    {
-      id: 2,
-      text: "home 2",
-      url: "/home/home_2",
-    },
-    {
-      id: 3,
-      text: "home 3",
-      url: "/home/home_3",
-    },
-    {
-      id: 4,
-      text: "home 4",
-      url: "/home/home_4",
-    },
-    {
-      id: 5,
-      text: "home 5",
-      url: "/home/home_5",
-    },
-    {
-      id: 6,
-      text: "home 6",
-      url: "/home/home_6",
-    },
-  ];
 
   const pageTextData = [
     {
-      id: 7,
-      text: "Item Details",
-      href: "/item/item_20",
-    },
-    {
-      id: 8,
-      text: "Explore Collections",
-      href: "/collection/explore_collection",
-    },
-    {
-      id: 9,
-      text: "Collection",
-      href: "/collection/avatar_1",
-    },
-    {
-      id: 10,
-      text: "Activity",
-      href: "/activity",
-    },
-    {
-      id: 11,
-      text: "Rankings",
-      href: "/rankings",
-    },
-    {
-      id: 12,
-      text: "User",
-      href: "/user/avatar_6",
-    },
-    {
-      id: 13,
-      text: "Edit Profile",
-      href: "/profile/user_avatar",
-    },
-    {
-      id: 14,
+      id: 1,
       text: "About",
       href: "/about",
     },
     {
-      id: 15,
+      id: 2,
       text: "Contact",
       href: "/contact",
-    },
-    {
-      id: 16,
-      text: "Wallet",
-      href: "/wallet",
-    },
-    {
-      id: 17,
-      text: "Login",
-      href: "/login",
-    },
-    {
-      id: 18,
-      text: "Page 404",
-      href: "/404",
-    },
-    {
-      id: 19,
-      text: "Terms Of Service",
-      href: "/tarms",
-    },
+    }
   ];
 
   const resourcesData = [
@@ -270,12 +184,12 @@ const MblNavbar = ({ theme }) => {
             <img
               src="/images/logo.png"
               className="max-h-7 dark:hidden"
-              alt="Xhibiter | NFT Marketplace"
+              alt="vKnightHub | NFT Marketplace"
             />
 
             <img
               src="/images/logo_white.png"
-              alt="Xhibiter | NFT Marketplace"
+              alt="vKnightHub | NFT Marketplace"
               className="max-h-7 dark:block hidden"
             />
           </a>
@@ -350,36 +264,6 @@ const MblNavbar = ({ theme }) => {
                 </svg>
               </i>
             </button>
-
-            <ul className="dropdown-menu dark:bg-jacarta-800 left-0 top-[85%] z-10 hidden min-w-[200px] gap-x-4 whitespace-nowrap rounded-xl bg-white transition-all will-change-transform group-hover:visible group-hover:opacity-100 lg:invisible lg:absolute lg:grid lg:translate-y-4 lg:py-4 lg:px-2 lg:opacity-0 lg:shadow-2xl lg:group-hover:translate-y-2 relative">
-              {homenavData.map(({ id, text, url }) => {
-                return (
-                  <li key={id}>
-                    <Link href={url}>
-                      <a
-                        className="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center rounded-xl px-5 py-2 transition-colors"
-                        onClick={() => {
-                          // setHomeNavValue(id);
-                          // setNavItemValue(id);
-                          dispatch(closeMblMenu());
-                          localStorage.setItem("navItemValue", id);
-                        }}
-                      >
-                        <span
-                          className={
-                            navItemValue === id
-                              ? "font-display text-accent text-sm"
-                              : "font-display text-jacarta-700 text-sm dark:text-white"
-                          }
-                        >
-                          {text}
-                        </span>
-                      </a>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
           </li>
           <li className="js-nav-dropdown group relative">
             <button
@@ -391,7 +275,7 @@ const MblNavbar = ({ theme }) => {
               onClick={(e) => handleItemDropdown(e)}
             >
               <span className={navText === "pages" ? "text-accent" : ""}>
-                Pages
+                About
               </span>
 
               <i className="lg:hidden">
@@ -964,10 +848,10 @@ const MblNavbar = ({ theme }) => {
                 Balance
               </span>
               <div className="flex items-center">
-                <svg className="icon icon-ETH -ml-1 mr-1 h-[1.125rem] w-[1.125rem]">
-                  <use xlinkHref="/icons.svg#icon-ETH"></use>
+                <svg className="icon icon-ADA -ml-1 mr-1 h-[1.125rem] w-[1.125rem]">
+                  <use xlinkHref="/icons.svg#icon-ada"></use>
                 </svg>
-                <span className="text-green text-lg font-bold">10 ETH</span>
+                <span className="text-green text-lg font-bold">10 ADA</span>
               </div>
             </div>
             <Link href="/user/avatar_6">

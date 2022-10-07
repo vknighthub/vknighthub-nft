@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
@@ -85,16 +86,16 @@ const BidsCarousel = () => {
                       </a>
                     </Link>
                     <span className="dark:border-jacarta-600 border-jacarta-100 flex items-center whitespace-nowrap rounded-md border py-1 px-2">
-                      <Tippy content={<span>ETH</span>}>
+                      <Tippy content={<span>ADA</span>}>
                         <img
-                          src="/images/eth-icon.svg"
+                          src="/images/cardano-ada-icon.svg"
                           alt=""
                           className="w-3 h-3 mr-1"
                         />
                       </Tippy>
 
                       <span className="text-green text-sm font-medium tracking-tight">
-                        {eth_number} ETH
+                        {eth_number} ADA
                       </span>
                     </span>
                   </div>
@@ -102,8 +103,8 @@ const BidsCarousel = () => {
                     <span className="dark:text-jacarta-300 text-jacarta-500">
                       Current Bid
                     </span>
-                    <span className="dark:text-jacarta-100 text-jacarta-700">
-                      {bid_number} ETH
+                    <span className="dark:text-jacarta-100 text-jacarta-700 ml-3">
+                      {bid_number} ADA
                     </span>
                   </div>
 

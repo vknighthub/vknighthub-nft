@@ -11,7 +11,7 @@ const Help_center = () => {
   const bgImage = "/images/page-title/knowledge_base_banner.jpg";
   return (
     <div>
-      <Meta title="Help Center || Xhibiter | NFT Marketplace Next.js Template" />
+      <Meta title="Help Center || vKnightHub | NFT Marketplace" />
       <div className="pt-[5.5rem] lg:pt-24">
         {/* <!-- Page Title --> */}
 

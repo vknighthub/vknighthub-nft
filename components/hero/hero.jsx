@@ -1,5 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const hero = () => {
   return (
@@ -51,8 +53,10 @@ const hero = () => {
                 alt=""
                 className="hero-img mt-8 inline-block w-72 rotate-[8deg] sm:w-full lg:w-[24rem] xl:w-[35rem]"
               />
-              <img
+              <Image
                 src="/images/hero/3D_elements.png"
+                layout="fill"
+                style={{ width: "100%", height: "100%" }}
                 alt=""
                 className="animate-fly absolute top-0 md:-right-[10%]"
               />

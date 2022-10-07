@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import Team from "../../components/about/team";
 import Partners from "../../components/partners/Partners";
@@ -10,7 +11,7 @@ const About = () => {
   const [video, setVideo] = useState(false);
   return (
     <>
-      <Meta title="About || Xhibiter | NFT Marketplace Next.js Template" />
+      <Meta title="About || vKnightHub | NFT Marketplace" />
       {/* <!-- Page title --> */}
       <section className="relative pt-24 lg:pb-96">
         <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
@@ -24,7 +25,7 @@ const About = () => {
           {/* <!-- Page Title --> */}
           <div className="mx-auto max-w-2xl py-16 text-center">
             <h1 className="font-display text-jacarta-700 mb-8 text-4xl font-medium dark:text-white">
-              About Xhibiter
+              About vKnightHub
             </h1>
             <p className="dark:text-jacarta-300 text-lg leading-normal">
               Every digital creation available through MakersPlace is an
@@ -153,7 +154,7 @@ const About = () => {
                         title="YouTube video player"
                         // frameborder="0"
                         allow="accelerometer autoplay clipboard-write encrypted-media gyroscope picture-in-picture"
-                        // allowfullscreen=""
+                      // allowfullscreen=""
                       ></iframe>
                     </div>
                   </div>

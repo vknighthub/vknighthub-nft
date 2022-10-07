@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
 import React from 'react';
 
 const Story = ({ compFor }) => {
-	console.log(compFor);
 	if (compFor === 'about') {
 		return (
 			<div>
@@ -17,14 +18,15 @@ const Story = ({ compFor }) => {
 								<div className="relative">
 									<img
 										src="/images/about/story.jpg"
-										width="200"
-										height="200"
-										className="mx-auto mt-8 w-[80%] rotate-[8deg] rounded-[10rem]"
+										className="mx-auto mt-8 rotate-[8deg] rounded-[10rem]"
+										alt="story"
 									/>
-									<img
+									<Image
 										src="/images/hero/3D_elements.png"
+										layout="fill"
+										style={{ width: "100%", height: "100%" }}
 										alt=""
-										className="animate-fly absolute top-0"
+										className="animate-fly absolute top-0 md:-right-[10%]"
 									/>
 								</div>
 							</div>
@@ -103,11 +105,11 @@ const Story = ({ compFor }) => {
 						{/* <!-- Info --> */}
 						<div className="pb-10 lg:w-[45%] lg:py-20 lg:pr-16">
 							<h2 className="text-jacarta-700 font-display mb-6 text-2xl dark:text-white">
-								Sign up for The Tide, {"Xhibiter's"} newsletter!
+								Sign up for The Tide, {"vKnightHub's"} newsletter!
 							</h2>
 							<p className="dark:text-jacarta-300 mb-10 text-lg leading-normal">
 								Join our mailing list to stay in the loop with our newest feature releases, NFT
-								drops, and tips and tricks for navigating Xhibiter
+								drops, and tips and tricks for navigating vKnightHub
 							</p>
 
 							<form className="relative">

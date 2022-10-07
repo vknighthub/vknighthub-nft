@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
 
 	return (
 		<>
-			<Meta title="Home 1 || Xhibiter | NFT Marketplace Next.js Template" />
+			<Meta title="Home || vKnightHub | NFT Marketplace" />
 
 			<Provider store={store}>
 				<ThemeProvider enableSystem={true} attribute="class">

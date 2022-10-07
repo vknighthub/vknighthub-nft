@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import Link from 'next/link';
 
@@ -6,30 +7,20 @@ const Partners = () => {
 		<div>
 			<div className="dark:bg-jacarta-800 bg-light-base">
 				<div className="container">
-					<div className="grid grid-cols-2 py-8 sm:grid-cols-5">
-						<Link href="#">
-							<a>
-								<img src="/images/partners/partner_logo_1.png" alt="partner 1" />{' '}
+					<div className="grid grid-cols-3 py-8 sm:grid-cols-3">
+						<Link href="https://cardano.org/">
+							<a target="_blank" >
+								<img src="/images/partners/partnert-cardano.png" alt="Cardano Partner" />{' '}
 							</a>
 						</Link>
-						<Link href="#">
-							<a>
-								<img src="/images/partners/partner_logo_2.png" alt="partner 1" />{' '}
+						<Link href="https://namiwallet.io/">
+							<a target="_blank" >
+								<img src="/images/partners/partner-nami.png" alt="Nami Partner" />{' '}
 							</a>
 						</Link>
-						<Link href="#">
-							<a>
-								<img src="/images/partners/partner_logo_3.png" alt="partner 1" />{' '}
-							</a>
-						</Link>
-						<Link href="#">
-							<a>
-								<img src="/images/partners/partner_logo_4.png" alt="partner 1" />{' '}
-							</a>
-						</Link>
-						<Link href="#">
-							<a>
-								<img src="/images/partners/partner_logo_5.png" alt="partner 1" />{' '}
+						<Link href="https://blockfrost.io/">
+							<a target="_blank" >
+								<img src="/images/partners/partnert-blockfrost.png" alt="Blockfrost Partner"/>{' '}
 							</a>
 						</Link>
 					</div>

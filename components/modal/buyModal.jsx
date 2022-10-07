@@ -120,7 +120,7 @@ const BuyModal = () => {
 									className="checked:bg-accent dark:bg-jacarta-600 text-accent border-jacarta-200 focus:ring-accent/20 dark:border-jacarta-500 h-5 w-5 self-start rounded focus:ring-offset-0"
 								/>
 								<label htmlFor="buyNowTerms" className="dark:text-jacarta-200 text-sm">
-									By checking this box, I agree to {"Xhibiter's"}{' '}
+									By checking this box, I agree to {"vKnightHub's"}{' '}
 									<Link href="/tarms">
 										<a className="text-accent">Terms of Service</a>
 									</Link>

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import ImageTitle from "../../components/imageTitle";
 import Meta from "../../components/Meta";
@@ -9,7 +10,7 @@ const Contact = () => {
 
   return (
     <div>
-      <Meta title="Contact || Xhibiter | NFT Marketplace Next.js Template" />
+      <Meta title="Contact || vKnightHub | NFT Marketplace" />
       <div className="pt-[5.5rem] lg:pt-24">
         <ImageTitle text="Get in touch" image={bgImage} />
 

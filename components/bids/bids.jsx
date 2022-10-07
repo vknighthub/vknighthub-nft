@@ -4,6 +4,7 @@ import 'swiper/css/navigation';
 import { HeadLine } from '../component';
 import 'tippy.js/dist/tippy.css';
 import BidsCarousel from '../carousel/bidsCarousel';
+import Image from 'next/image';
 
 const Bids = ({ classes = 'pt-10 pb-24', bgWhite }) => {
 	return (
@@ -11,7 +12,7 @@ const Bids = ({ classes = 'pt-10 pb-24', bgWhite }) => {
 			{/* <!-- Hot Bids --> */}
 			{bgWhite && (
 				<picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
-					<img src="/images/gradient_light.jpg" alt="gradient" className="h-full w-full" />
+					<Image src="/images/gradient_light.jpg" alt="gradient" className="h-full w-full" />
 				</picture>
 			)}
 			<div className="container">

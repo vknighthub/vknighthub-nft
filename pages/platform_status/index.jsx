@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import ImageTitle from '../../components/imageTitle';
 import Head from 'next/head';
@@ -11,7 +12,7 @@ const Platform_status = () => {
 				{/* <!-- Page Title --> */}
 
 				<ImageTitle
-					text="Xhibiter System Status"
+					text="vKnightHub System Status"
 					image="/images/page-title/knowledge_base_banner.jpg"
 				/>
 

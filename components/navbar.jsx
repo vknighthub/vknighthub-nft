@@ -68,13 +68,13 @@ const Navbar = () => {
                   <a className="shrink-0 lg:mr-14">
                     <img
                       src="/images/logo.png"
-                      className="max-h-7 dark:hidden"
-                      alt="Xhibiter | NFT Marketplace"
+                      className="max-h-9 dark:hidden"
+                      alt="vKnightHub | NFT Marketplace"
                     />
                     <img
                       src="/images/logo_white.png"
-                      className="hidden max-h-7 dark:block"
-                      alt="Xhibiter | NFT Marketplace"
+                      className="hidden max-h-9 dark:block"
+                      alt="vKnightHub | NFT Marketplace"
                     />
                   </a>
                 </Link>
@@ -102,7 +102,7 @@ const Navbar = () => {
                   <img
                     src="/images/logo.png"
                     alt=""
-                    className="max-h-7 h-auto"
+                    className="max-h-9 h-auto"
                   />
                 </a>
               </Link>
@@ -110,8 +110,8 @@ const Navbar = () => {
                 <a className="shrink-0 hidden dark:block">
                   <img
                     src="/images/logo_white.png"
-                    className="max-h-7 h-auto"
-                    alt="Xhibiter | NFT Marketplace"
+                    className="max-h-9 h-auto"
+                    alt="vKnightHub | NFT Marketplace"
                   />
                 </a>
               </Link>
@@ -236,13 +236,13 @@ const Navbar = () => {
                   <a className="shrink-0 lg:mr-14">
                     <img
                       src="/images/logo.png"
-                      className="max-h-7 dark:hidden"
-                      alt="Xhibiter | NFT Marketplace"
+                      className="max-h-9 dark:hidden"
+                      alt="vKnightHub | NFT Marketplace"
                     />
                     <img
                       src="/images/logo_white.png"
-                      className="hidden max-h-7 dark:block"
-                      alt="Xhibiter | NFT Marketplace"
+                      className="hidden max-h-9 dark:block"
+                      alt="vKnightHub | NFT Marketplace"
                     />
                   </a>
                 </Link>
@@ -272,7 +272,7 @@ const Navbar = () => {
                     <img
                       src="/images/logo_white.png"
                       className="max-h-7 h-auto"
-                      alt="Xhibiter | NFT Marketplace"
+                      alt="vKnightHub | NFT Marketplace"
                     />
                   </a>
                 </Link>
@@ -282,13 +282,13 @@ const Navbar = () => {
                     <img
                       src="/images/logo.png"
                       alt=""
-                      className="max-h-7 h-auto dark:hidden"
+                      className="max-h-9 h-auto dark:hidden"
                     />
 
                     <img
                       src="/images/logo_white.png"
-                      className="max-h-7 h-auto hidden dark:block"
-                      alt="Xhibiter | NFT Marketplace"
+                      className="max-h-9 h-auto hidden dark:block"
+                      alt="vKnightHub | NFT Marketplace"
                     />
                   </a>
                 </Link>
