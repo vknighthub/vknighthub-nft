@@ -10,6 +10,7 @@ import {
 	updateRenkingDataByBlockchain,
 	updateRenkingDataByPostdate,
 } from '../../redux/counterSlice';
+import Image from 'next/image';
 
 const Recently_added_dropdown = ({ data, dropdownFor }) => {
 	const dispatch = useDispatch();
@@ -376,15 +377,23 @@ const Recently_added_dropdown = ({ data, dropdownFor }) => {
 					}
 				>
 					<ul className="flex flex-col flex-wrap">
-						{data.map(({ id, text }) => {
+						{data.map(({ policyid, name, image }) => {
 							return (
-								<li key={id} onClick={() => setsortActive(id)}>
+								<li key={policyid} onClick={() => setsortActive(policyid)}>
 									<button
 										className="dropdown-item font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white"
-										onClick={() => dispatch(updateRenkingData(text))}
+										onClick={() => dispatch(updateRenkingData(policyid))}
 									>
-										<span className="text-jacarta-700 dark:text-white">{text}</span>
-										{sortActive === id && (
+										<Image
+											src={image}
+											alt={name}
+											className="rounded-2lg"
+											height={32}
+											width={32}
+											objectFit="cover"
+										/>
+										<span className="text-jacarta-700 dark:text-white">{name}</span>
+										{sortActive === policyid && (
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
 												viewBox="0 0 24 24"

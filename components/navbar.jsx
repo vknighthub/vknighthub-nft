@@ -34,18 +34,6 @@ const Navbar = () => {
   const router = useRouter();
   const pid = router.asPath;
 
-  // const router = useRouter();
-
-  useEffect(() => {
-    if (pid === "/home/home_3") {
-      setHome3(true);
-      // console.log('home 3');
-    } else {
-      setHome3(false);
-      // console.log('not home 3');
-    }
-  }, [pid]);
-
   useEffect(() => {
     window.addEventListener("scroll", handleSticky);
   }, []);

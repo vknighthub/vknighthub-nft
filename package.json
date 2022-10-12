@@ -1,5 +1,5 @@
 {
-  "name": "vKnightHub-v1",
+  "name": "vknighthub",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -11,14 +11,20 @@
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@emurgo/cardano-serialization-lib-browser": "^11.1.0",
+    "@emurgo/cip14-js": "^3.0.1",
     "@mui/material": "^5.8.7",
     "@reduxjs/toolkit": "^1.8.2",
+    "@tanstack/react-query": "^4.10.3",
+    "@tanstack/react-query-devtools": "^4.11.0",
     "@tippyjs/react": "^4.2.6",
+    "axios": "^1.1.2",
     "chart.js": "^3.8.0",
     "metamask-react": "^2.4.0",
     "moment": "^2.29.4",
     "next": "12.1.6",
     "next-themes": "^0.2.0",
+    "query-string": "^7.1.1",
     "react": "18.2.0",
     "react-accessible-accordion": "^5.0.0",
     "react-chartjs-2": "^4.3.1",
@@ -30,7 +36,10 @@
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.2",
     "react-tabs": "^5.1.0",
+    "reselect": "^4.1.6",
     "sharp": "^0.30.7",
+    "slug": "^8.2.2",
+    "sweetalert2": "^11.5.1",
     "swiper": "^8.2.4"
   },
   "devDependencies": {
@@ -38,7 +47,9 @@
     "eslint": "8.17.0",
     "eslint-config-next": "12.1.6",
     "postcss": "^8.4.14",
-    "tailwindcss": "^3.1.3"
+    "tailwindcss": "^3.1.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   },
   "overrides": {
     "autoprefixer": "10.4.5"

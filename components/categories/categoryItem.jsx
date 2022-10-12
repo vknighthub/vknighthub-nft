@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+/* eslint-disable @next/next/no-img-element */
 import Tippy from "@tippyjs/react";
-import "tippy.js/dist/tippy.css";
-import Likes from "../likes";
-import Auctions_dropdown from "../dropdown/Auctions_dropdown";
+import Link from "next/link";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import "tippy.js/dist/tippy.css";
 import { buyModalShow } from "../../redux/counterSlice";
+import Auctions_dropdown from "../dropdown/Auctions_dropdown";
+import Likes from "../likes";
 
 const CategoryItem = () => {
   const { sortedtrendingCategoryItemData } = useSelector(

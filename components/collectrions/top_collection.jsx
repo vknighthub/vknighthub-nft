@@ -1,38 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { collection_data } from '../../data/collection_data';
-import HeadLine from '../headLine';
+import axios from "axios";
 import Image from 'next/image';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { NFTList } from '../../api/api';
+import HeadLine from '../headLine';
 
 const Top_collection = () => {
 	const [timeActiveText, setTimeActiveText] = useState('last 7 days');
-	const [data, setData] = useState(collection_data);
+	const [nftitem, setNftItem] = useState([])
 	const [dropdownShow, setDropdownShow] = useState(false);
+	const [filterNFT, setFilterNFT] = useState('7d');
 	const timeText = [
 		{
-			id: 1,
-			text: 'Last 24 Hours',
+			id: '24h',
+			text: 'Last 24 hours',
 		},
 		{
-			id: 2,
+			id: '7d',
 			text: 'Last 7 days',
 		},
 		{
-			id: 3,
+			id: '30d',
 			text: 'Last 30 days',
 		},
 	];
 
-	const handleFilter = (text) => {
-		setTimeActiveText(text);
-		const newCollectionData = collection_data.filter((item) => {
-			if (text === 'Last 30 days') {
-				return item;
-			}
-			return item.postDate === text;
-		});
-		setData(newCollectionData);
+	const handleFilter = (filter, activetext) => {
+		setTimeActiveText(activetext)
+		setFilterNFT(filter);
 	};
 
 	const handleDropdown = (e) => {
@@ -48,6 +44,19 @@ const Top_collection = () => {
 			}
 		});
 	};
+
+	const fetchedNFT = async (filter) => {
+		const { data } = await axios.get(NFTList(filter)).catch(
+			function (error) {
+				return Promise.reject(error)
+			}
+		);
+		setNftItem(data.ranking)
+	};
+
+	useEffect(() => {
+		fetchedNFT(filterNFT)
+	}, [filterNFT])
 
 	return (
 		<div>
@@ -85,12 +94,12 @@ const Top_collection = () => {
 										: 'dropdown-menu dark:bg-jacarta-800 z-10  min-w-[200px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl hidden text-jacarta-700 dark:text-white absolute m-0 top-full'
 								}
 							>
-								{timeText.map(({ id, text }) => {
+								{timeText.map(({ id, text }, index) => {
 									return (
 										<button
-											key={id}
+											key={index}
 											onClick={() => {
-												handleFilter(text);
+												handleFilter(id, text);
 											}}
 											className="block dropdown-text"
 										>
@@ -105,29 +114,44 @@ const Top_collection = () => {
 					</div>
 
 					<div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-[1.875rem] lg:grid-cols-4">
-						{data.map((item) => {
-							const { id, image, title, icon, amount, postTime } = item;
-							const itemLink = image.split('/').slice(-1).toString().replace('.jpg', '');
-
+						{nftitem.slice(0, 20).map((item, index) => {
+							const { thumbnail, name, icon, floor_price, policies } = item;
+							const policy = policies[0].toString()
+							const image = (thumbnail && thumbnail.toString().startsWith("ipfs://"))
+								?
+								thumbnail.toString().replace("ipfs://", "https://ipfs.io/ipfs/")
+								: ''
 							return (
 								<div
 									className="border-jacarta-100 dark:bg-jacarta-700 rounded-2xl flex border bg-white py-4 px-7 transition-shadow hover:shadow-lg dark:border-transparent"
-									key={id}
+									key={index}
 								>
 									<figure className="mr-4 shrink-0">
-										<Link href={'/collection/' + itemLink}>
+										<Link
+											href={
+												{
+													pathname: '/collection/[collection]',
+													query: {
+														collection: policy
+													}
+												}
+											}
+											passHref={true}
+										>
 											<a className="relative block">
-												{/* <img src={image} alt={title} className="rounded-2lg" /> */}
-												<Image
-													src={image}
-													alt={title}
-													className="rounded-2lg"
-													height={48}
-													width={48}
-													objectFit="cover"
-												/>
+												{image &&
+													<Image
+														src={image}
+														alt={name}
+														className="rounded-2lg"
+														height={48}
+														width={48}
+														objectFit="cover"
+
+													/>
+												}
 												<div className="dark:border-jacarta-600 bg-jacarta-700 absolute -left-3 top-1/2 flex h-6 w-6 -translate-y-2/4 items-center justify-center rounded-full border-2 border-white text-xs text-white">
-													{id}
+													{index + 1}
 												</div>
 												{icon && (
 													<div
@@ -150,14 +174,14 @@ const Top_collection = () => {
 										</Link>
 									</figure>
 									<div>
-										<Link href={'/collection/' + itemLink}>
+										<Link href={'/collection/'}>
 											<a className="block">
 												<span className="font-display text-jacarta-700 hover:text-accent font-semibold dark:text-white">
-													{title}
+													{name}
 												</span>
 											</a>
 										</Link>
-										<span className="dark:text-jacarta-300 text-sm">{amount} ETH</span>
+										<span className="dark:text-jacarta-300 text-sm">₳ {floor_price}</span>
 									</div>
 								</div>
 							);
@@ -171,8 +195,8 @@ const Top_collection = () => {
 						</Link>
 					</div>
 				</div>
-			</section>
-		</div>
+			</section >
+		</div >
 	);
 };
 

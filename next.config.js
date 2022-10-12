@@ -2,6 +2,15 @@
 const nextConfig = {
 	reactStrictMode: true,
 	productionBrowserSourceMaps: true,
+	future: {
+		webpack5: false
+	},
+	webpack: function (config) {
+		config.experiments = { syncWebAssembly: true };
+		return config;
+	},
+	images: {
+		domains: ['ipfs.io'],
+	}
 };
-
 module.exports = nextConfig;

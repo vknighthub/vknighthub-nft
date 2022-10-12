@@ -1,15 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import { tranding_category_filter } from "../../data/categories_data";
-import Link from "next/link";
-import { HeadLine } from "../../components/component";
-import Feature_collections_data from "../../data/Feature_collections_data";
-import Collection_dropdown from "../../components/dropdown/collection_dropdown";
-import Explore_collection_item from "../../components/collectrions/explore_collection_item";
-import Head from "next/head";
-import Meta from "../../components/Meta";
-import { collectCollectionData } from "../../redux/counterSlice";
 import { useDispatch } from "react-redux";
+import Explore_collection_item from "../../components/collectrions/explore_collection_item";
+import { HeadLine } from "../../components/component";
+import Collection_dropdown from "../../components/dropdown/collection_dropdown";
+import Meta from "../../components/Meta";
+import { tranding_category_filter } from "../../data/categories_data";
+import Feature_collections_data from "../../data/Feature_collections_data";
+import { collectCollectionData } from "../../redux/counterSlice";
 
 const Explore_collection = () => {
   const dispatch = useDispatch();

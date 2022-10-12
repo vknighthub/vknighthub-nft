@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { tranding_category_filter } from '../../data/categories_data';
-import CategoryItem from './categoryItem';
-import { trendingCategoryData } from '../../data/categories_data';
-import Tippy from '@tippyjs/react';
-import Recently_added_dropdown from '../dropdown/recently_added_dropdown';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { tranding_category_filter, trendingCategoryData } from '../../data/categories_data';
 import { updateTrendingCategoryItemData } from '../../redux/counterSlice';
+import Recently_added_dropdown from '../dropdown/recently_added_dropdown';
+import CategoryItem from './categoryItem';
 
 const Trending_categories_items = () => {
 	const [itemdata, setItemdata] = useState(trendingCategoryData);

@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import { items_data } from '../../data/items_data';
-import Auctions_dropdown from '../../components/dropdown/Auctions_dropdown';
-import Link from 'next/link';
+/* eslint-disable @next/next/no-img-element */
 import Tippy from '@tippyjs/react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import 'tippy.js/dist/tippy.css';
-import Items_Countdown_timer from '../../components/items_countdown_timer';
 import { ItemsTabs } from '../../components/component';
-import More_items from './more_items';
+import Auctions_dropdown from '../../components/dropdown/Auctions_dropdown';
+import Items_Countdown_timer from '../../components/items_countdown_timer';
 import Likes from '../../components/likes';
 import Meta from '../../components/Meta';
-import { useDispatch } from 'react-redux';
+import { items_data } from '../../data/items_data';
 import { bidsModalShow } from '../../redux/counterSlice';
+import More_items from './more_items';
 
 const Item = () => {
 	const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Item = () => {
 
 	return (
 		<>
-			<Meta title={`${pid} || Xhibiter | NFT Marketplace Next.js Template`} />
+			<Meta title={`vKnightHub | NFT Marketplace`} />
 			{/*  <!-- Item --> */}
 			<section className="relative lg:mt-24 lg:pt-24 lg:pb-48 mt-24 pt-12 pb-24">
 				<picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">

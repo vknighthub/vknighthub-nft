@@ -1,9 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 import React from 'react';
 import ImageTitle from '../../components/imageTitle';
-import { wallet_data } from '../../data/wallet_data';
-import Link from 'next/link';
-import Head from 'next/head';
 import Meta from '../../components/Meta';
+import { wallet_data } from '../../data/wallet_data';
 
 const Wallet = () => {
 	const bgImage = '/images/page-title/wallet_banner.jpg';
