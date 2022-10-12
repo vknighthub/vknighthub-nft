@@ -38,8 +38,6 @@ const Collection = () => {
 
 	const image = (data && data.thumbnail && data.thumbnail.toString().startsWith("ipfs://")) ? data.thumbnail.toString().replace("ipfs://", "https://ipfs.io/ipfs/") : ''
 
-	console.log(image)
-
 	return (
 		<>
 			<Meta title={`${`colectName`} || vKnightHub | NFT Marketplace`} />

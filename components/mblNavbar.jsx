@@ -521,21 +521,10 @@ const MblNavbar = ({ theme }) => {
           >
             <UserId
               classes="js-copy-clipboard font-display text-jacarta-700 my-4 flex select-none items-center whitespace-nowrap px-5 leading-none dark:text-white"
-              userId="0x7a86c0b064171007716bbd6af96676935799a63e"
               shortId={true}
             />
 
-            <div className="dark:border-jacarta-600 border-jacarta-100 mx-5 mb-6 rounded-lg border p-4">
-              <span className="dark:text-jacarta-200 text-sm font-medium tracking-tight">
-                Balance
-              </span>
-              <div className="flex items-center">
-                <svg className="icon icon-ADA -ml-1 mr-1 h-[1.125rem] w-[1.125rem]">
-                  <use xlinkHref="/icons.svg#icon-ada"></use>
-                </svg>
-                <span className="text-green text-lg font-bold">10 ADA</span>
-              </div>
-            </div>
+            
             <Link href="/user/avatar_6">
               <a className="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors">
                 <svg
