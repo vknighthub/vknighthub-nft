@@ -6,7 +6,7 @@ const nextConfig = {
 		webpack5: false
 	},
 	webpack: function (config) {
-		config.experiments = { syncWebAssembly: true };
+		config.experiments = { syncWebAssembly: true, layers: true };
 		return config;
 	},
 	images: {
