@@ -1,44 +1,42 @@
 /* eslint-disable @next/next/no-img-element */
-import Tippy from "@tippyjs/react";
 import Link from "next/link";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "tippy.js/dist/tippy.css";
 import { buyModalShow } from "../../redux/counterSlice";
-import Auctions_dropdown from "../dropdown/Auctions_dropdown";
-import Likes from "../likes";
 
 const CategoryItem = () => {
   const { sortedtrendingCategoryItemData } = useSelector(
-    (state) => state.counter
+    (state) => state.nfttransaction
   );
   const dispatch = useDispatch();
 
   return (
     <div className="grid grid-cols-1 gap-[1.875rem] md:grid-cols-2 lg:grid-cols-4">
-      {sortedtrendingCategoryItemData.map((item) => {
+      {sortedtrendingCategoryItemData.map((item, index) => {
         const {
-          id,
-          image,
-          title,
-          price,
-          bidLimit,
-          bidCount,
-          likes,
-          creator,
-          owner,
+          unit,
+          thumbnail,
+          unit_name,
+          price
         } = item;
-        const itemLink = image
-          .split("/")
-          .slice(-1)
-          .toString()
-          .replace(".jpg", "")
-          .replace(".gif", "");
+        const image = (thumbnail && thumbnail.thumbnail.toString().startsWith("ipfs://")) ? thumbnail.thumbnail.toString().replace("ipfs://", "https://ipfs.io/ipfs/") : ''
+
         return (
-          <article key={id}>
+          <article key={index}>
             <div className="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 rounded-2.5xl block border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg">
               <figure className="relative">
-                <Link href={`/item/${itemLink}`}>
+                <Link
+                  href={
+                    {
+                      pathname: '/item/[asset]',
+                      query: {
+                        asset: unit
+                      }
+                    }
+                  }
+                  passHref={true}
+                >
                   <a>
                     <img
                       src={image}
@@ -47,56 +45,39 @@ const CategoryItem = () => {
                     />
                   </a>
                 </Link>
-
-                <Likes like={likes} />
-
-                <div className="absolute left-3 -bottom-3">
-                  <div className="flex -space-x-2">
-                    <Link href={`/item/${itemLink}`}>
-                      <a>
-                        <Tippy content={<span>creator: {creator.name}</span>}>
-                          <img
-                            src={creator.image}
-                            alt="creator"
-                            className="dark:border-jacarta-600 hover:border-accent dark:hover:border-accent h-6 w-6 rounded-full border-2 border-white"
-                          />
-                        </Tippy>
-                      </a>
-                    </Link>
-                    <Link href={`/item/${itemLink}`}>
-                      <a>
-                        <Tippy content={<span>creator: {owner.name}</span>}>
-                          <img
-                            src={owner.image}
-                            alt="owner"
-                            layout="fill"
-                            className="dark:border-jacarta-600 hover:border-accent dark:hover:border-accent h-6 w-6 rounded-full border-2 border-white"
-                          />
-                        </Tippy>
-                      </a>
-                    </Link>
-                  </div>
-                </div>
               </figure>
+              
               <div className="mt-7 flex items-center justify-between">
-                <Link href={`/item/${itemLink}`}>
+                <Link
+                  href={
+                    {
+                      pathname: '/item/[asset]',
+                      query: {
+                        asset: unit
+                      }
+                    }
+                  }
+                  passHref={true}
+                >
                   <a>
                     <span className="font-display text-jacarta-700 hover:text-accent text-base dark:text-white">
-                      {title}
+                      {unit_name}
                     </span>
                   </a>
                 </Link>
 
-                {/* auction dropdown  */}
-                <Auctions_dropdown classes="dark:hover:bg-jacarta-600 dropup hover:bg-jacarta-100 rounded-full" />
               </div>
-              <div className="mt-2 text-sm">
-                <span className="dark:text-jacarta-200 text-jacarta-700 mr-1">
-                  {price}
+              <div className="mt-2 text-sm flex">
+
+                <span className="dark:text-jacarta-400 text-jacarta-700 text-xl  mr-1">
+                  {price / 1000000}
                 </span>
-                <span className="dark:text-jacarta-300 text-jacarta-500">
-                  {bidCount}/{bidLimit}
+                <span className="-ml-1" data-tippy-content="ada">
+                  <svg className="icon mr-1 h-5 w-5">
+                    <use xlinkHref="/icons.svg#icon-ada"></use>
+                  </svg>
                 </span>
+
               </div>
 
               <div className="mt-8 flex items-center justify-between">
@@ -106,7 +87,17 @@ const CategoryItem = () => {
                 >
                   Buy now
                 </button>
-                <Link href={`/item/${itemLink}`}>
+                <Link
+                  href={
+                    {
+                      pathname: '/item/[asset]',
+                      query: {
+                        asset: unit
+                      }
+                    }
+                  }
+                  passHref={true}
+                >
                   <a className="group flex items-center">
                     <svg className="icon icon-history group-hover:fill-accent dark:fill-jacarta-200 fill-jacarta-500 mr-1 mb-[3px] h-4 w-4">
                       <use xlinkHref="/icons.svg#icon-history"></use>

@@ -9,13 +9,17 @@ import { fetchedDetailNFT } from '../../fetchers/nftdetail';
 import { followCursor } from 'tippy.js';
 import Link from 'next/link';
 import numberWithCommas from '../../util/numberWithCommas';
+import Social_dropdown from '../../components/dropdown/Social_dropdown';
+import unslug from 'unslug';
 
 
-const Collection = () => {
+
+
+const Collection = ({ collection }) => {
 	const [likesImage, setLikesImage] = useState(false);
 
 	const router = useRouter();
-	const policyid = router.query.collection;
+	const policyid = collection;
 	const colectName = router.query.collectionname;
 
 	const { isError, data, error } = useQuery(
@@ -40,7 +44,7 @@ const Collection = () => {
 
 	return (
 		<>
-			<Meta title={`${`colectName`} || vKnightHub | NFT Marketplace`} />
+			<Meta title={`${unslug(colectName)} || vKnightHub | NFT Marketplace`} />
 
 			<div className="pt-[5.5rem] lg:pt-24">
 				{/* <!-- Banner --> */}
@@ -93,7 +97,7 @@ const Collection = () => {
 					<div className="container">
 						<div className="text-center">
 							<h2 className="font-display text-jacarta-700 mb-2 text-4xl font-medium dark:text-white">
-								{colectName}
+								{unslug(colectName)}
 							</h2>
 							<div className="mb-8">
 								<span className="text-jacarta-400 text-sm font-bold">Statistics obtained from </span>
@@ -164,7 +168,7 @@ const Collection = () => {
 									</p>
 								</>
 							}
-							{/* 
+
 							<div className="mt-6 flex items-center justify-center space-x-2.5 relative">
 								<div className="dark:border-jacarta-600 dark:hover:bg-jacarta-600 border-jacarta-100 hover:bg-jacarta-100 dark:bg-jacarta-700 rounded-xl border bg-white">
 									<div
@@ -186,9 +190,8 @@ const Collection = () => {
 								</div>
 
 								<Social_dropdown />
-								<Auctions_dropdown classes="dark:border-jacarta-600 dark:hover:bg-jacarta-600 border-jacarta-100 dropdown hover:bg-jacarta-100 dark:bg-jacarta-700 rounded-xl border bg-white relative" />
-							
-							</div> */}
+
+							</div>
 
 						</div>
 
@@ -197,9 +200,13 @@ const Collection = () => {
 
 				{/* <!-- end profile --> */}
 			</div>
-			<Collection_items />
+			{policyid && <Collection_items policy={policyid} />}
 		</>
 	);
 };
 
 export default Collection;
+
+Collection.getInitialProps = ({ query: { collection } }) => {
+	return { collection }
+}

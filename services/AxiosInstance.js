@@ -12,6 +12,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(async (config) => {
     config.params = config.params || {};
+    config.headers = config.headers || {};
     return config;
 });
 

@@ -10,11 +10,6 @@ const ItemsTabs = () => {
 	const [tabsActive, setTabsActive] = useState(1);
 	const tabsHeadText = [
 		{
-			id: 1,
-			text: 'Offers',
-			icon: 'offers',
-		},
-		{
 			id: 2,
 			text: 'properties',
 			icon: 'properties',
@@ -62,10 +57,7 @@ const ItemsTabs = () => {
 							);
 						})}
 					</TabList>
-
-					<TabPanel className="tab-content">
-						<OfferTab />
-					</TabPanel>
+					
 					<TabPanel>
 						<Properties />
 					</TabPanel>

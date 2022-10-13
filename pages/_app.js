@@ -16,6 +16,9 @@ export async function getStaticProps() {
 
 	await queryClient.prefetchQuery(['nftmarketplace'])
 	await queryClient.prefetchQuery(['nftdetail'])
+	await queryClient.prefetchQuery(['nfttransaction'])
+	await queryClient.prefetchQuery(['nftasset'])
+	await queryClient.prefetchQuery(['nftassetaddress'])
 
 	return {
 		props: {

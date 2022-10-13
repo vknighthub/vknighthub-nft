@@ -36,7 +36,7 @@ const UserId = ({ classes, shortId }) => {
 							<svg className="icon icon-ADA -ml-1 mr-1 h-[1.125rem] w-[1.125rem]">
 								<use xlinkHref="/icons.svg#icon-ada"></use>
 							</svg>
-							<span className="text-green text-lg font-bold">{walletinfo.balance} ADA</span>
+							<span className="text-green text-lg font-bold">{walletinfo.balance/1000000} ADA</span>
 						</div>
 					</div>
 				</>

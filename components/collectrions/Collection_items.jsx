@@ -8,7 +8,7 @@ import FilterCategoryItem from '../categories/filterCategoryItem';
 import 'react-tabs/style/react-tabs.css';
 import { collection_activity_item_data } from '../../data/collection_data';
 
-const Collection_items = () => {
+const Collection_items = ({policy}) => {
 	const [itemsTabs, setItemsTabs] = useState(1);
 	const [categoryItemData, setCategoryItemData] = useState(trendingCategoryData);
 
@@ -28,7 +28,6 @@ const Collection_items = () => {
 		<>
 			<section className="relative py-24">
 				<picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
-					{/* <img src="img/gradient_light.jpg" alt="gradient" className="h-full w-full" /> */}
 					<Image
 						src="/images/gradient_light.jpg"
 						alt="gradient"
@@ -62,7 +61,7 @@ const Collection_items = () => {
 
 						<TabPanel>
 							<div>
-								<FilterCategoryItem />
+								<FilterCategoryItem policy={policy} />
 							</div>
 						</TabPanel>
 						<TabPanel>

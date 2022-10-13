@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import Recently_added_dropdown from '../dropdown/recently_added_dropdown';
 import {
 	Accordion,
-	AccordionItem,
-	AccordionItemHeading,
-	AccordionItemButton,
-	AccordionItemPanel,
+	AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel
 } from 'react-accessible-accordion';
+import Recently_added_dropdown from '../dropdown/recently_added_dropdown';
+import { useSelector } from 'react-redux';
+
 
 const Collection_category_filter = () => {
+
+	const { trait } = useSelector(
+		(state) => state.nfttransaction
+	);
+
 	const [propertiesModal, setPropertiesModal] = useState(false);
 	const [propetiesAccordionValue, setPropetiesAccordionValue] = useState(null);
 
@@ -36,54 +40,7 @@ const Collection_category_filter = () => {
 			text: 'Auction Ending Soon',
 		},
 	];
-	const blockchainText = [
-		{
-			id: 1,
-			text: 'Ethereum',
-		},
-		{
-			id: 2,
-			text: 'Polygon',
-		},
-		{
-			id: 3,
-			text: 'Flow',
-		},
-		{
-			id: 4,
-			text: 'Tezos',
-		},
-	];
-	const categoryText = [
-		{
-			id: 1,
-			text: 'All',
-		},
-		{
-			id: 2,
-			text: 'Art',
-		},
-		{
-			id: 3,
-			text: 'Collectibles',
-		},
-		{
-			id: 4,
-			text: 'Domain',
-		},
-		{
-			id: 5,
-			text: 'Music',
-		},
-		{
-			id: 6,
-			text: 'Photography',
-		},
-		{
-			id: 7,
-			text: 'Virtual World',
-		},
-	];
+
 	const saleTypeText = [
 		{
 			id: 1,
@@ -103,97 +60,12 @@ const Collection_category_filter = () => {
 		},
 	];
 
-	const propertiesText = [
-		{
-			parentId: 1,
-			titleText: 'Background',
-			properties: [
-				{
-					id: 1,
-					color: 'red',
-					point: '14',
-				},
-				{
-					id: 2,
-					color: 'green',
-					point: '56',
-				},
-				{
-					id: 3,
-					color: 'blue',
-					point: '11',
-				},
-				{
-					id: 4,
-					color: 'white',
-					point: '25',
-				},
-			],
-		},
-		{
-			parentId: 2,
-			titleText: 'Eyes',
-			properties: [
-				{
-					id: 1,
-					color: 'red',
-					point: '14',
-				},
-				{
-					id: 2,
-					color: 'green',
-					point: '56',
-				},
-				{
-					id: 3,
-					color: 'blue',
-					point: '11',
-				},
-				{
-					id: 4,
-					color: 'white',
-					point: '25',
-				},
-			],
-		},
-		{
-			parentId: 3,
-			titleText: 'face',
-			properties: [
-				{
-					id: 1,
-					color: 'red',
-					point: '14',
-				},
-				{
-					id: 2,
-					color: 'green',
-					point: '56',
-				},
-				{
-					id: 3,
-					color: 'blue',
-					point: '11',
-				},
-				{
-					id: 4,
-					color: 'white',
-					point: '25',
-				},
-			],
-		},
-	];
-
 	return (
 		<>
 			{/* <!-- Filter --> */}
 			<div className="mb-8 flex flex-wrap items-center justify-between">
 				<div className="flex flex-wrap items-center">
-					{/* <!-- Blockchain --> */}
-					<Recently_added_dropdown data={blockchainText} dropdownFor="blockchain" />
 
-					{/* <!-- Category --> */}
-					<Recently_added_dropdown data={categoryText} dropdownFor="category" />
 
 					{/* <!-- Properties --> */}
 					<div className="my-1 mr-2.5">
@@ -248,15 +120,15 @@ const Collection_category_filter = () => {
 										<div className="accordion" id="accordionProps">
 											<div className="accordion-item dark:border-jacarta-600 border-jacarta-100 border-b">
 												<Accordion>
-													{propertiesText.map((item) => {
-														const { parentId, titleText, properties } = item;
+													{trait.map((item, index) => {
+														const { trait_name, trait_values } = item;
 														return (
-															<AccordionItem key={parentId}>
+															<AccordionItem key={index}>
 																<AccordionItemHeading>
 																	<AccordionItemButton>
 																		<h2 className="accordion-header" id="prop-heading-1">
 																			<button className="accordion-button collapsed dark:bg-jacarta-700 font-display text-jacarta-700 relative flex w-full items-center justify-between bg-white px-6 py-5 dark:text-white">
-																				<span>{titleText}</span>
+																				<span>{trait_name}</span>
 																				<svg
 																					xmlns="http://www.w3.org/2000/svg"
 																					viewBox="0 0 24 24"
@@ -273,14 +145,14 @@ const Collection_category_filter = () => {
 																</AccordionItemHeading>
 																<AccordionItemPanel>
 																	<div id="prop-background" className="accordion-collapse">
-																		{properties.map((proparty) => {
-																			const { id, color, point } = proparty;
+																		{trait_values.map((proparty, index) => {
+																			const { value, count } = proparty;
 																			return (
-																				<div className="accordion-body px-2 pb-4" key={id}>
+																				<div className="accordion-body px-2 pb-4" key={index}>
 																					<div className="flex flex-col">
 																						<button className="dark:hover:bg-jacarta-600 dark:text-jacarta-200 hover:bg-jacarta-50 flex items-center justify-between rounded-xl px-4 py-2">
-																							<span>{color}</span>
-																							<span>{point}</span>
+																							<span>{value}</span>
+																							<span>{count}</span>
 																						</button>
 																					</div>
 																				</div>

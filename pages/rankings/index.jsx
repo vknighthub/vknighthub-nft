@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import slug from 'slug';
 import Swal from "sweetalert2";
 import Meta from '../../components/Meta';
 import { fetchedAllNFT } from "../../fetchers/nftmarketplace";
@@ -125,7 +126,7 @@ const Index = () => {
 												pathname: '/collection/[collection]',
 												query: {
 													collection: policy,
-													collectionname: name
+													collectionname: slug(name, '-'),
 												}
 											}
 										}
