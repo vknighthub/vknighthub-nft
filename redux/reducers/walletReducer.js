@@ -5,7 +5,9 @@ const initialState = {
     walletinfo : {
         balance: 0,
         address: ''
-    }
+    },
+    walletModal: false,
+    walletName: ''
 };
 
 export const walletReducer = createSlice({
@@ -14,11 +16,23 @@ export const walletReducer = createSlice({
     reducers: {
         walletInformation: (state, action) => {
 			state.walletinfo = action.payload;
-		}
+		},
+        walletModalShow: (state) => {
+			state.walletModal = true;
+		},
+		walletModalhide: (state) => {
+			state.walletModal = false;
+		},
+        poolWalletName: (state, action) => {
+            state.walletName = action.payload;
+        }
     }
 });
 
 export const {
+    walletModalShow,
+	walletModalhide,
+    poolWalletName,
 	walletInformation
 } = walletReducer.actions;
 

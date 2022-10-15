@@ -6,6 +6,7 @@ import MblNavbar from "./mblNavbar";
 import { useSelector, useDispatch } from "react-redux";
 import { openMblMenu } from "../redux/counterSlice";
 import { useRouter } from "next/router";
+import Wallet_modal from "./modal/wallet_modal";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
@@ -448,7 +449,7 @@ const Navbar = () => {
           )}
         </header>
 
-        {/* <Wallet_modal /> */}
+        {<Wallet_modal />}
       </div>
     );
   }

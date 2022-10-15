@@ -349,8 +349,12 @@ class CardanoWallet extends React.Component {
     getBalance = async () => {
         try {
             const balanceCBORHex = await this.API.getBalance();
-
-            const balance = Value.from_bytes(Buffer.from(balanceCBORHex, "hex")).coin().to_str();
+            let balance
+            if (balanceCBORHex > 0) {
+                balance = Value.from_bytes(Buffer.from(balanceCBORHex, "hex")).coin().to_str();
+            }else{
+                balance = 0
+            }
             this.setState({ balance })
 
         } catch (err) {
@@ -367,6 +371,7 @@ class CardanoWallet extends React.Component {
         try {
             const raw = await this.API.getChangeAddress();
             const changeAddress = Address.from_bytes(Buffer.from(raw, "hex")).to_bech32()
+            // console.log(changeAddress)
             this.setState({ changeAddress })
         } catch (err) {
             console.log(err)
@@ -399,7 +404,11 @@ class CardanoWallet extends React.Component {
         try {
             const raw = await this.API.getUsedAddresses();
             const rawFirst = raw[0];
-            const usedAddress = Address.from_bytes(Buffer.from(rawFirst, "hex")).to_bech32()
+            let usedAddress
+            if (rawFirst) {
+                usedAddress = Address.from_bytes(Buffer.from(rawFirst, "hex")).to_bech32()
+            }
+
             this.setState({ usedAddress })
         } catch (err) {
             console.log(err)
@@ -414,10 +423,11 @@ class CardanoWallet extends React.Component {
         try {
             const raw = await this.API.getUsedAddresses();
             const rawFirst = raw[0];
-            const usedAddress = Address.from_bytes(Buffer.from(rawFirst, "hex")).to_bech32()
-
+            let usedAddress
+            if (rawFirst) {
+                usedAddress = Address.from_bytes(Buffer.from(rawFirst, "hex")).to_bech32()
+            }
             const balanceCBORHex = await this.API.getBalance();
-
             const balance = Value.from_bytes(Buffer.from(balanceCBORHex, "hex")).coin().to_str();
             const walletInfo = {
                 balance: balance,
@@ -650,8 +660,6 @@ class CardanoWallet extends React.Component {
         const submittedTxHash = await this.API.submitTx(Buffer.from(signedTx.to_bytes(), "utf8").toString("hex"));
         this.setState({ submittedTxHash });
 
-        // const txBodyCborHex_unsigned = Buffer.from(txBody.to_bytes(), "utf8").toString("hex");
-        // this.setState({txBodyCborHex_unsigned, txBody})
 
     }
 
@@ -1087,16 +1095,33 @@ class CardanoWallet extends React.Component {
 
     handleConnectWallet = (wallet) => {
         this.handleWalletSelect(wallet)
+        if (window.cardano[wallet] && (window.cardano[wallet].name.toUpperCase() === wallet.toUpperCase()) ) {
+            this.props.WalletShow(false);
+        } else {
+            if (!this.state.walletFound) {
+                this.props.WalletShow(true);
+                this.props.WalletName(wallet)
+            } else {
+                this.props.WalletShow(false);
+            }
+        }
+
     }
 
-    showWalletInformation = (walletChoosed, balance, key, textshow) => {
+    showWalletInformation = (walletFound, walletChoosed, balance, key, textshow) => {
         const defaultInfo = (balance / 1000000) + ' ADA'
         let result = walletChoosed
+
         if (walletChoosed === key) {
-            result = defaultInfo
+            if (!walletFound) {
+                result = textshow
+            } else {
+                result = defaultInfo
+            }
         } else {
             result = textshow
         }
+
         return result
     }
 
@@ -1105,11 +1130,10 @@ class CardanoWallet extends React.Component {
         this.pollWallets();
     }
 
-
-
     render() {
         return (
             <>
+
                 <Link href="#">
                     <a className="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors"
                         onClick={() => this.handleConnectWallet('nami')}
@@ -1130,7 +1154,7 @@ class CardanoWallet extends React.Component {
 
                         </svg>
                         <span className="font-display text-jacarta-700 mt-1 text-sm dark:text-white">
-                            {this.showWalletInformation(this.state.whichWalletSelected, this.state.balance, 'nami', 'Nami')}
+                            {this.showWalletInformation(this.state.walletFound, this.state.whichWalletSelected, this.state.balance, 'nami', 'Nami')}
                         </span>
                     </a>
                 </Link>
@@ -1140,7 +1164,7 @@ class CardanoWallet extends React.Component {
                     >
                         <Image src="/images/eternl.webp" width={32} height={32} alt="Eternl Wallet" />
                         <span className="font-display text-jacarta-700 mt-1 text-sm dark:text-white">
-                            {this.showWalletInformation(this.state.whichWalletSelected, this.state.balance, 'ccvault', 'Eternl')}
+                            {this.showWalletInformation(this.state.walletFound, this.state.whichWalletSelected, this.state.balance, 'ccvault', 'Eternl')}
                         </span>
                     </a>
                 </Link>
