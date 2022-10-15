@@ -1,14 +1,23 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React, { useState } from 'react';
-import Nami from './nami';
-
-
-
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
+import CardanoWallet from './CardanoWallet';
+import { useDispatch } from 'react-redux';
+import { walletInformation } from '../../redux/reducers/walletReducer';
 
 const Wallet = () => {
+    const dispatch = useDispatch();
+
     const [profileShow, setProfileShow] = useState(false);
-    
+
+    const [walletinfor, setWalletInfo] = useState();
+    console.log(walletinfor)
+
+    useEffect(() => {
+        if (walletinfor) {
+            dispatch((walletInformation(walletinfor)));
+        }
+    },[walletinfor])
+
 
     return (
         <>
@@ -39,16 +48,7 @@ const Wallet = () => {
                     onMouseLeave={() => setProfileShow(false)}
                 >
 
-                    <Nami />
-                    
-                    <Link href="/profile/user_avatar">
-                        <a className="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors">
-                            <Image src="/images/eternl.webp" width={32} height={32} alt="Eternl Wallet" />
-                            <span className="font-display text-jacarta-700 mt-1 text-sm dark:text-white">
-                                Eternl
-                            </span>
-                        </a>
-                    </Link>
+                    <CardanoWallet WalletInfo={setWalletInfo} />
 
                 </div>
             </div>

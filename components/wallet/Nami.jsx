@@ -2,49 +2,51 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { walletInformation } from '../../redux/reducers/walletReducer.js';
+import { Cardano } from './wallet-js/Cardano';
 import blockfrostApiKey from './config.js';
-import NamiWalletApi, { Cardano } from './nami-js';
+import NamiWalletApi from './wallet-js/nami-js/nami.js';
 
 let nami;
 
-const Nami = () => {
-    const dispatch = useDispatch();
+const Nami = ({handleClick}) => {
+    // const dispatch = useDispatch();
 
-    const [namiConnected, setNamiConnected] = useState();
-    const [balancenami, setBalancenami] = useState(0);
-    const [addressnami, setAddressnami] = useState('');
+    // const [namiConnected, setNamiConnected] = useState();
+    // const [balancenami, setBalancenami] = useState(0);
+    // const [addressnami, setAddressnami] = useState('');
 
-    const connectNami = async () => {
-        // Connects nami wallet to current website 
-        await nami.enable()
-            .then(result => setNamiConnected(result))
-            .catch(e => console.log(e))
-    }
+    // const connectNami = async () => {
+    //     // Connects nami wallet to current website 
+    //     await nami.enable()
+    //         .then(result => setNamiConnected(result))
+    //         .catch(e => console.log(e))
+    // }
 
-    useEffect(() => {
-        async function t() {
-            const S = await Cardano();
-            nami = new NamiWalletApi(
-                S,
-                window.cardano,
-                blockfrostApiKey
-            )
-            if (await nami.isInstalled()) {
-                await nami.isEnabled().then(result => { setNamiConnected(result) })
-                await nami.getBalance().then(result => { setBalancenami(result.lovelace) })
-                await nami.getAddress().then(result => { setAddressnami(result) })
-            }
-        }
-        t()
-    }, [namiConnected])
 
-    if (namiConnected && balancenami && addressnami) {
-        const walletInfo = {
-            balance: balancenami,
-            address: addressnami
-        }
-        dispatch((walletInformation(walletInfo)));
-    }
+    // useEffect(() => {
+    //     async function t() {
+    //         const S = await Cardano();
+    //         nami = new NamiWalletApi(
+    //             S,
+    //             window.cardano,
+    //             blockfrostApiKey
+    //         )
+    //         if (await nami.isInstalled()) {
+    //             await nami.isEnabled().then(result => { setNamiConnected(result) })
+    //             await nami.getBalance().then(result => { setBalancenami(result.lovelace) })
+    //             await nami.getAddress().then(result => { setAddressnami(result) })
+    //         }
+    //     }
+    //     t()
+    // }, [namiConnected])
+
+    // if (namiConnected && balancenami && addressnami) {
+    //     const walletInfo = {
+    //         balance: balancenami,
+    //         address: addressnami
+    //     }
+    //     dispatch((walletInformation(walletInfo)));
+    // }
 
     
 
@@ -52,7 +54,7 @@ const Nami = () => {
 
         <Link href="#">
             <a className="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors"
-                onClick={() => connectNami()}
+                onClick={() => handleClick()}
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -70,10 +72,12 @@ const Nami = () => {
 
                 </svg>
                 <span className="font-display text-jacarta-700 mt-1 text-sm dark:text-white">
-                    {namiConnected ? `${balancenami / 1000000} ADA` : "Nami"}
+                    {/* {namiConnected ? `${balancenami / 1000000} ADA` : "Nami"} */}
                 </span>
             </a>
         </Link>
+
+        
     )
 }
 export default Nami;

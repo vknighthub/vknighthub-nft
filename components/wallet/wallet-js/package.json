@@ -1,8 +1,8 @@
 {
-  "name": "nami-js",
+  "name": "wallet-js",
   "version": "2.0.0",
   "description": "",
-  "main": "nami.js",
+  "main": "wallet",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

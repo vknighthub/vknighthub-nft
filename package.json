@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@emurgo/cardano-serialization-lib-asmjs": "^11.1.0",
     "@emurgo/cardano-serialization-lib-browser": "^11.1.0",
     "@emurgo/cip14-js": "^3.0.1",
     "@mui/material": "^5.8.7",
