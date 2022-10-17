@@ -7,11 +7,12 @@ import CardanoWallet from './CardanoWallet';
 const Wallet = () => {
     const dispatch = useDispatch();
     const walletModal = useSelector((state) => state.wallet.walletModal);
+    const { walletinfo } = useSelector((state) => state.wallet);
 
     const [walletinfor, setWalletInfo] = useState();
     const [walletShow, setWalletShow] = useState(walletModal);
 
-    const [walletName,setWalletName] = useState();
+    const [walletName, setWalletName] = useState();
 
     useEffect(() => {
         if (walletinfor) {
@@ -22,7 +23,7 @@ const Wallet = () => {
             dispatch(poolWalletName(walletName))
             setWalletShow(false)
         }
-    }, [walletinfor,walletShow])
+    }, [walletinfor, walletShow])
 
     return (
         <>
@@ -42,7 +43,7 @@ const Wallet = () => {
                     </svg>
                 </button>
                 <div className="dropdown-menu dark:bg-jacarta-800 group-dropdown-hover:opacity-100 group-dropdown-hover:visible !-right-4 !top-[85%] !left-auto z-10 min-w-[14rem] whitespace-nowrap rounded-xl bg-white transition-all will-change-transform before:absolute before:-top-3 before:h-3 before:w-full lg:absolute lg:grid lg:!translate-y-4 lg:py-4 lg:px-2 lg:shadow-2xl hidden lg:invisible lg:opacity-0" >
-                    <CardanoWallet WalletInfo={setWalletInfo} WalletShow={setWalletShow} WalletName={setWalletName}/>
+                    <CardanoWallet WalletInfo={setWalletInfo} WalletShow={setWalletShow} WalletName={setWalletName} showBalance={walletinfo.balance} />
                 </div>
 
             </div>

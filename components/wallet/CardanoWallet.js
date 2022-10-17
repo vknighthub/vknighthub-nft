@@ -26,7 +26,7 @@ class CardanoWallet extends React.Component {
             networkId: undefined,
             Utxos: undefined,
             CollatUtxos: undefined,
-            balance: undefined,
+            balance: props.showBalance,
             changeAddress: undefined,
             rewardAddress: undefined,
             usedAddress: undefined,
@@ -36,7 +36,7 @@ class CardanoWallet extends React.Component {
             txBodyCborHex_signed: "",
             submittedTxHash: "",
 
-            addressBech32SendADA: "addr_test1qrt7j04dtk4hfjq036r2nfewt59q8zpa69ax88utyr6es2ar72l7vd6evxct69wcje5cs25ze4qeshejy828h30zkydsu4yrmm",
+            addressBech32SendADA: "Addr1qxvtnqc87d0wmh5z5alr7nrdg93sta4na8aq3sfqf02ntvalks36a6vhq32ydv4zh6v988gpckxm5z3s6d4l5y6kg4xsgnqs66",
             lovelaceToSend: 3000000,
             assetNameHex: "4c494645",
             assetPolicyIdHex: "ae02017105527c6c0c9840397a39cc5ca39fabe5b9998ba70fda5f2f",
@@ -350,9 +350,9 @@ class CardanoWallet extends React.Component {
         try {
             const balanceCBORHex = await this.API.getBalance();
             let balance
-            if (balanceCBORHex > 0) {
+            if (balanceCBORHex) {
                 balance = Value.from_bytes(Buffer.from(balanceCBORHex, "hex")).coin().to_str();
-            }else{
+            } else {
                 balance = 0
             }
             this.setState({ balance })
@@ -1095,7 +1095,7 @@ class CardanoWallet extends React.Component {
 
     handleConnectWallet = (wallet) => {
         this.handleWalletSelect(wallet)
-        if (window.cardano[wallet] && (window.cardano[wallet].name.toUpperCase() === wallet.toUpperCase()) ) {
+        if (window.cardano[wallet] && (window.cardano[wallet].name.toUpperCase() === wallet.toUpperCase())) {
             this.props.WalletShow(false);
         } else {
             if (!this.state.walletFound) {
@@ -1108,7 +1108,10 @@ class CardanoWallet extends React.Component {
 
     }
 
-    showWalletInformation = (walletFound, walletChoosed, balance, key, textshow) => {
+    showWalletInformation = (walletFound, walletChoosed,balance, key, textshow) => {
+        
+        
+        console.log("showWalletInformations" + balance)
         const defaultInfo = (balance / 1000000) + ' ADA'
         let result = walletChoosed
 
@@ -1154,7 +1157,7 @@ class CardanoWallet extends React.Component {
 
                         </svg>
                         <span className="font-display text-jacarta-700 mt-1 text-sm dark:text-white">
-                            {this.showWalletInformation(this.state.walletFound, this.state.whichWalletSelected, this.state.balance, 'nami', 'Nami')}
+                            {this.showWalletInformation(this.state.walletFound, this.state.whichWalletSelected,this.state.balance, 'nami', 'Nami')}
                         </span>
                     </a>
                 </Link>
@@ -1164,7 +1167,7 @@ class CardanoWallet extends React.Component {
                     >
                         <Image src="/images/eternl.webp" width={32} height={32} alt="Eternl Wallet" />
                         <span className="font-display text-jacarta-700 mt-1 text-sm dark:text-white">
-                            {this.showWalletInformation(this.state.walletFound, this.state.whichWalletSelected, this.state.balance, 'ccvault', 'Eternl')}
+                            {this.showWalletInformation(this.state.walletFound, this.state.whichWalletSelected,this.state.balance, 'ccvault', 'Eternl')}
                         </span>
                     </a>
                 </Link>
