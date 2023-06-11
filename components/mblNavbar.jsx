@@ -11,6 +11,7 @@ import Wallet from "./wallet/Wallet";
 
 const MblNavbar = ({ theme }) => {
   const { mblMenu } = useSelector((state) => state.counter);
+  const { walletinfo } = useSelector((state) => state.wallet);
   const dispatch = useDispatch();
   const [profileShow, setProfileShow] = useState(false);
   const router = useRouter();
@@ -389,7 +390,7 @@ const MblNavbar = ({ theme }) => {
       {/* <!-- Mobile Connect Wallet / Socials --> */}
       <div className="mt-10 w-full lg:hidden">
         <Metamask_comp_text />
-                  
+
         <hr className="dark:bg-jacarta-600 bg-jacarta-100 my-5 h-px border-0" />
 
         {/* <!-- Socials --> */}
@@ -471,7 +472,7 @@ const MblNavbar = ({ theme }) => {
       <div className="ml-8 hidden lg:flex xl:ml-12">
         {/* <!-- Wallet --> */}
 
-        <Wallet ></Wallet>          
+        <Wallet ></Wallet>
         {/* <!-- Profile --> */}
         <div className="js-nav-dropdown group-dropdown relative">
           {router.asPath === "/home/home_3" ? (
@@ -522,10 +523,21 @@ const MblNavbar = ({ theme }) => {
             <UserId
               classes="js-copy-clipboard font-display text-jacarta-700 my-4 flex select-none items-center whitespace-nowrap px-5 leading-none dark:text-white"
               shortId={true}
+              showWalletBalance={true}
             />
 
-            
-            <Link href="/user/avatar_6">
+
+            <Link
+              href={
+                {
+                  pathname: '/user/[user]',
+                  query: {
+                    user: walletinfo.stake
+                  }
+                }
+              }
+              passHref={true}
+            >
               <a className="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -542,7 +554,17 @@ const MblNavbar = ({ theme }) => {
                 </span>
               </a>
             </Link>
-            <Link href="/profile/user_avatar">
+            <Link href={
+                {
+                  pathname: '/profile/[profile]',
+                  query: {
+                    profile: walletinfo.stake
+                  }
+                }
+              }
+              as = "/profile"
+              passHref={true}
+            >
               <a className="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

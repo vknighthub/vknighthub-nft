@@ -19,6 +19,8 @@ export async function getStaticProps() {
 	await queryClient.prefetchQuery(['nfttransaction'])
 	await queryClient.prefetchQuery(['nftasset'])
 	await queryClient.prefetchQuery(['nftassetaddress'])
+	await queryClient.prefetchQuery(['userprofile'])
+
 
 	return {
 		props: {
@@ -38,7 +40,7 @@ function MyApp({ Component, pageProps }) {
 		defaultOptions: { queries: { staleTime: 60000 } },
 	}))
 
-	
+	console.log(pageProps)
 	return (
 		<>
 			<Meta title="Home || vKnightHub | NFT Marketplace" />

@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import Tippy from '@tippyjs/react';
-import CopyToClipboard from 'react-copy-to-clipboard';
 import Image from 'next/image';
-import UserId from '../../components/userId';
-import Head from 'next/head';
+import React, { useEffect, useState } from 'react';
 import Meta from '../../components/Meta';
+import UserId from '../../components/userId';
 
-const Edit_user = () => {
+const Edit_user = (props) => {
+
+
 	const [profilePhoto, setProfilePhoto] = useState();
 	const [coverePhoto, setCoverePhoto] = useState();
 	const [preview, setPreview] = useState();
@@ -60,10 +59,11 @@ const Edit_user = () => {
 			<div className="pt-[5.5rem] lg:pt-24">
 				{/* <!-- Banner --> */}
 				<div className="relative">
-					<img
+					<Image
 						src={coverPreview ? coverPreview : '/images/user/banner.jpg'}
 						alt="banner"
 						className="h-[18.75rem] w-full object-cover"
+						layout="fill"
 					/>
 					<div className="container relative -translate-y-4">
 						<div className="font-display group hover:bg-accent absolute right-0 bottom-4 flex items-center rounded-lg bg-white py-2 px-4 text-sm">
@@ -93,7 +93,7 @@ const Edit_user = () => {
 				{/* <!-- Edit Profile --> */}
 				<section className="dark:bg-jacarta-800 relative py-16">
 					<picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
-						<img src="/images/gradient_light.jpg" alt="gradient" className="h-full w-full" />
+						<Image src="/images/gradient_light.jpg" alt="gradient" className="h-full w-full" layout="fill" />
 					</picture>
 					<div className="container">
 						<div className="mx-auto max-w-[48.125rem] md:flex">
@@ -108,6 +108,18 @@ const Edit_user = () => {
 										id="profile-username"
 										className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 hover:ring-2 dark:text-white px-3"
 										placeholder="Enter username"
+										required
+									/>
+								</div>
+								<div className="mb-6">
+									<label className="font-display text-jacarta-700 mb-1 block text-sm dark:text-white">
+										Name<span className="text-red">*</span>
+									</label>
+									<input
+										type="text"
+										id="profile-name"
+										className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 hover:ring-2 dark:text-white px-3"
+										placeholder="Enter name"
 										required
 									/>
 								</div>
@@ -204,7 +216,9 @@ const Edit_user = () => {
 
 									<UserId
 										classes="js-copy-clipboard dark:bg-jacarta-700 border-jacarta-100 hover:bg-jacarta-50 dark:border-jacarta-600 dark:text-jacarta-300 flex w-full select-none items-center rounded-lg border bg-white py-3 px-4"
-										userId="0x7a9fe22691c811ea339401bbb2leb"
+										shortId={true}
+										showWalletBalance={false}
+
 									/>
 								</div>
 								<button className="bg-accent shadow-accent-volume hover:bg-accent-dark rounded-full py-3 px-8 text-center font-semibold text-white transition-all">
@@ -263,3 +277,6 @@ const Edit_user = () => {
 };
 
 export default Edit_user;
+Edit_user.getInitialProps = ({ query: { profile } }) => {
+	return { profile }
+}

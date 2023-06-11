@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import slug from "slug";
-import { NFTList } from '../../api/api';
+import { NFTList } from "../../api/outside/api";
 import HeadLine from '../headLine';
 
 const Top_collection = () => {

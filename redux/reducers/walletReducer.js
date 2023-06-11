@@ -4,7 +4,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     walletinfo : {
         balance: 0,
-        address: ''
+        address: '',
+        stake: ''
     },
     walletModal: false,
     walletName: ''

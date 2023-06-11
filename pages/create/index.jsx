@@ -68,7 +68,7 @@ const Create = () => {
         </picture>
         <div className="container">
           <h1 className="font-display text-jacarta-700 py-16 text-center text-4xl font-medium dark:text-white">
-            Create
+            Create New Collection
           </h1>
 
           <div className="mx-auto max-w-[48.125rem]">

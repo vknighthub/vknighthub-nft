@@ -2,10 +2,12 @@ import Tippy from '@tippyjs/react';
 import React, { useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { useSelector } from 'react-redux';
+import stringTruncateFromCenter from '../util/stringTruncateFromCenter';
 
-const UserId = ({ classes, shortId }) => {
+const UserId = ({ classes, shortId, showWalletBalance }) => {
 	const [copied, setCopied] = useState(false);
 	const { walletinfo } = useSelector((state) => state.wallet);
+
 	return (
 		<>
 			{walletinfo && walletinfo.address &&
@@ -14,7 +16,7 @@ const UserId = ({ classes, shortId }) => {
 						<Tippy hideOnClick={false} content={copied ? <span>copied</span> : <span>copy</span>}>
 							<button className={classes}>
 								<CopyToClipboard text={walletinfo.address} onCopy={() => setCopied(true)}>
-									<span>{!shortId ? walletinfo.address : `${walletinfo.address.substring(0, 17)}...`}</span>
+									<span>{!shortId ? walletinfo.address : `${stringTruncateFromCenter(walletinfo.address, 20)}`}</span>
 								</CopyToClipboard>
 
 								<svg
@@ -31,14 +33,16 @@ const UserId = ({ classes, shortId }) => {
 						</Tippy>
 
 					</div>
-					<div className="dark:border-jacarta-600 border-jacarta-100 mx-5 mb-6 rounded-lg border p-4">
-						<div className="flex items-center">
-							<svg className="icon icon-ADA -ml-1 mr-1 h-[1.125rem] w-[1.125rem]">
-								<use xlinkHref="/icons.svg#icon-ada"></use>
-							</svg>
-							<span className="text-green text-lg font-bold">{walletinfo.balance/1000000} ADA</span>
+					{showWalletBalance &&
+						<div className="dark:border-jacarta-600 border-jacarta-100 mx-5 mb-6 rounded-lg border p-4">
+							<div className="flex items-center">
+								<svg className="icon icon-ADA -ml-1 mr-1 h-[1.125rem] w-[1.125rem]">
+									<use xlinkHref="/icons.svg#icon-ada"></use>
+								</svg>
+								<span className="text-green text-lg font-bold">{walletinfo.balance / 1000000} ADA</span>
+							</div>
 						</div>
-					</div>
+					}
 				</>
 			}
 		</>

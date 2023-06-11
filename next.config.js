@@ -10,7 +10,7 @@ const nextConfig = {
 		return config;
 	},
 	images: {
-		domains: ['ipfs.io'],
+		domains: ['ipfs.io','api.vcoincheck.io'],
 	}
 };
 module.exports = nextConfig;

@@ -98,9 +98,7 @@ const User_items = () => {
 						</TabPanel>
 						<TabPanel>
 							{/* <!-- Grid --> */}
-							<div className="grid grid-cols-1 gap-[1.875rem] md:grid-cols-3 lg:grid-cols-4">
 								<Explore_collection_item itemFor="userPage" />
-							</div>
 						</TabPanel>
 						<TabPanel>
 							<div>

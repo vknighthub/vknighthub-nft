@@ -8,7 +8,7 @@ const Wallet = () => {
     const dispatch = useDispatch();
     const walletModal = useSelector((state) => state.wallet.walletModal);
     const { walletinfo } = useSelector((state) => state.wallet);
-
+    
     const [walletinfor, setWalletInfo] = useState();
     const [walletShow, setWalletShow] = useState(walletModal);
 

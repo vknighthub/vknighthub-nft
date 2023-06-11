@@ -1,4 +1,4 @@
-import { NFTTransaction } from "../api/api";
+import { NFTTransaction } from "../api/outside/api";
 import axiosInstance from '../services/AxiosInstance';
 
 

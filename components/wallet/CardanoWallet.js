@@ -429,9 +429,15 @@ class CardanoWallet extends React.Component {
             }
             const balanceCBORHex = await this.API.getBalance();
             const balance = Value.from_bytes(Buffer.from(balanceCBORHex, "hex")).coin().to_str();
+
+            const state = await this.API.getRewardAddresses();
+            const stateFirst = state[0];
+            const rewardAddress = Address.from_bytes(Buffer.from(stateFirst, "hex")).to_bech32()
+
             const walletInfo = {
                 balance: balance,
-                address: usedAddress
+                address: usedAddress,
+                stake: rewardAddress
             }
             this.props.WalletInfo(walletInfo)
 
@@ -1110,8 +1116,6 @@ class CardanoWallet extends React.Component {
 
     showWalletInformation = (walletFound, walletChoosed,balance, key, textshow) => {
         
-        
-        console.log("showWalletInformations" + balance)
         const defaultInfo = (balance / 1000000) + ' ADA'
         let result = walletChoosed
 
